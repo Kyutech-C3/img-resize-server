@@ -29,5 +29,6 @@ FROM base as prod
 ARG CGO_ENABLED=0
 ARG GOOS=linux
 ARG GOARCH=amd64
+ENV GIN_MODE=release
 
-CMD ["GIN_MODE=release", "go", "run", "main.go"]
+CMD ["go", "run", "main.go"]
