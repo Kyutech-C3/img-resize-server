@@ -1,0 +1,113 @@
+basePath: /
+definitions:
+  schemas.ResizeResponse:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  license:
+    name: Kyutech-C3
+  title: Image Resize API
+  version: "1.0"
+paths:
+  /api/v1/resize:
+    get:
+      parameters:
+      - description: url
+        format: string
+        in: query
+        name: url
+        type: string
+      - description: width
+        format: int64
+        in: query
+        name: w
+        type: string
+      - description: height
+        format: int64
+        in: query
+        name: h
+        type: string
+      - description: size
+        format: int64
+        in: query
+        name: size
+        type: string
+      - description: quality
+        format: int64
+        in: query
+        name: q
+        type: string
+      - description: format
+        format: string
+        in: query
+        name: f
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.ResizeResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+      summary: 画像のリサイズ
+      tags:
+      - Resize
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: this is a file
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: width
+        format: int64
+        in: query
+        name: w
+        type: string
+      - description: height
+        format: int64
+        in: query
+        name: h
+        type: string
+      - description: size
+        format: int64
+        in: query
+        name: size
+        type: string
+      - description: quality
+        format: int64
+        in: query
+        name: q
+        type: string
+      - description: format
+        format: string
+        in: query
+        name: f
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.ResizeResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+      summary: 画像のリサイズ
+      tags:
+      - Resize
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
