@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  img-resize-api:
+    image: img-resize-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: ${CONTAINER_BUILD_TARGET}
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/go/src
+    env_file:
+      - .env

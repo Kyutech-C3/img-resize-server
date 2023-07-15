@@ -1,0 +1,166 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Image Resize API",
+        "contact": {},
+        "license": {
+            "name": "Kyutech-C3"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/v1/resize": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Resize"
+                ],
+                "summary": "画像のリサイズ",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "string",
+                        "description": "url",
+                        "name": "url",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "width",
+                        "name": "w",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "height",
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "size",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "quality",
+                        "name": "q",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "string",
+                        "description": "format",
+                        "name": "f",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schemas.ResizeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {}
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Resize"
+                ],
+                "summary": "画像のリサイズ",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "this is a file",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "width",
+                        "name": "w",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "height",
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "size",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "quality",
+                        "name": "q",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "string",
+                        "description": "format",
+                        "name": "f",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schemas.ResizeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "schemas.ResizeResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
